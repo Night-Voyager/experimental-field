@@ -5,8 +5,7 @@ module.exports = {
     node: true
   },
   extends: [
-    'standard',
-    'plugin:vue/vue3-essential'
+    'plugin:vue/vue3-recommended'
   ],
   overrides: [
     {
@@ -29,5 +28,7 @@ module.exports = {
     'vue'
   ],
   rules: {
+    'semi': 'warn',
+    'vue/html-indent': 'off'
   }
 }
