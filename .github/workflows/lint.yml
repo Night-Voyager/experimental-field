@@ -33,7 +33,7 @@ jobs:
 
       - name: Check lint result
         run: |
-          if [ -s lint_result.txt ]; then
-            grep -E 'problem|error|warning' lint_result.txt
-            exit 1
-          fi
+          if ((Test-Path lint_result.txt) -and ((Get-Content lint_result.txt) -ne $null)) {
+            Get-Content lint_result.txt | Select-String -Pattern 'problem|error|warning'
+            return 1
+          }
