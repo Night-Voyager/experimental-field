@@ -33,9 +33,6 @@ jobs:
 
       - name: Check lint result
         run: |
-          if (Test-Path lint_result.txt) {
-            $content = Get-Content lint_result.txt
-            if ($content | Select-String -Pattern 'error|warning') {
-              exit 1
-            }
+          if (Test-Path lint_result.txt -and ((Get-Content lint_result.txt) -match 'error|warning')) {
+            exit 1
           }
