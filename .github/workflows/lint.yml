@@ -28,5 +28,11 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Run tests
-        run: yarn lint
+      - name: Run lint
+        run: yarn lint 2> lint_errors.txt
+
+      - name: Check lint result
+        run: |
+          if [ -s lint_errors.txt ]; then
+            exit 1
+          fi
