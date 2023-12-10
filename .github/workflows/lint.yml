@@ -29,10 +29,11 @@ jobs:
         run: yarn
 
       - name: Run lint
-        run: yarn lint 2> lint_errors.txt
+        run: yarn lint | tee lint_result.txt
 
       - name: Check lint result
         run: |
-          if [ -s lint_errors.txt ]; then
+          if [ -s lint_result.txt ]; then
+            grep -E 'problem|error|warning' lint_result.txt
             exit 1
           fi
