@@ -32,3 +32,6 @@ jobs:
 
       - name: Run tests
         run: yarn test
+
+      - name: Run make
+        run: yarn make
