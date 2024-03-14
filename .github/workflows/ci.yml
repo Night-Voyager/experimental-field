@@ -32,3 +32,11 @@ jobs:
 
       - name: Run tests
         run: yarn test
+
+      - name: Run make
+        run: yarn make
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: out/make/squirrel.windows/x64/*Setup.exe
